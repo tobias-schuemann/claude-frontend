@@ -59,13 +59,43 @@ This adds a new dark mode option in settings that changes
 the widget appearance to match dark-themed applications."
 ```
 
-## Pull Request Process
+## How to Contribute
 
-1. Create a feature branch: `git checkout -b feature/your-feature`
-2. Make your changes following the code style
-3. Commit using conventional commits
-4. Push to your fork
-5. Open a pull request with a clear description
+### For External Contributors
+
+1. **Fork the repository** on GitHub
+2. **Clone your fork**:
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/claude-frontend.git
+   cd claude-frontend
+   npm install
+   ```
+3. **Create a feature branch**:
+   ```bash
+   git checkout -b feature/your-feature
+   ```
+4. **Make your changes** following the code style
+5. **Test locally**:
+   ```bash
+   npm test
+   npm link  # Test in a real project
+   ```
+6. **Commit using conventional commits** (see below)
+7. **Push to your fork**:
+   ```bash
+   git push origin feature/your-feature
+   ```
+8. **Open a Pull Request** from your fork to the main repository
+9. **Wait for review** - All PRs require approval from maintainers
+10. **Address feedback** if requested
+11. Once approved, maintainers will merge your PR
+
+### For Maintainers
+
+Maintainers with write access should still use PRs for all changes:
+1. Create a branch directly in the main repo
+2. Open a PR for review
+3. Another maintainer should review when possible
 
 ## Testing
 

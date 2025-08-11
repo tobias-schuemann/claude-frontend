@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Questions & Discussions
+    url: https://github.com/tobias-schuemann/claude-frontend/discussions
+    about: Please ask and answer questions here
+  - name: Claude Code Documentation
+    url: https://docs.anthropic.com/en/docs/claude-code
+    about: Check the official Claude Code documentation
