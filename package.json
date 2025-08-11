@@ -1,6 +1,6 @@
 {
   "name": "claude-frontend",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Visual element inspector for Claude Code - select elements in your browser and send them to Claude for instant code modifications",
   "main": "index.js",
   "browser": "browser.js",
