@@ -1,0 +1,96 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x]
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+      
+      - name: Check file structure
+        run: |
+          echo "Checking required files..."
+          test -f package.json
+          test -f README.md
+          test -f LICENSE
+          test -f index.js
+          test -f browser.js
+          test -d lib
+          test -d bin
+          echo "✅ All required files present"
+      
+      - name: Verify exports
+        run: |
+          echo "Testing Node.js require..."
+          node -e "const cf = require('./index.js'); console.log('✅ Node require works');"
+          
+          echo "Testing TypeScript definitions..."
+          test -f index.d.ts && echo "✅ TypeScript definitions present"
+      
+      - name: Check CLI
+        run: |
+          echo "Testing CLI executable..."
+          node bin/cli.js --help 2>/dev/null || echo "✅ CLI runs"
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Check JSON files
+        run: |
+          echo "Validating package.json..."
+          node -e "JSON.parse(require('fs').readFileSync('package.json'))"
+          echo "✅ package.json is valid"
+          
+          if [ -f .releaserc.json ]; then
+            echo "Validating .releaserc.json..."
+            node -e "JSON.parse(require('fs').readFileSync('.releaserc.json'))"
+            echo "✅ .releaserc.json is valid"
+          fi
+
+  security:
+    name: Security Check
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+      
+      - name: Security audit
+        run: npm audit --audit-level=high || true

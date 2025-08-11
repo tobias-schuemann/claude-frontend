@@ -1,0 +1,35 @@
+# Development files
+node_modules/
+.git/
+.gitignore
+.claude-frontend-session
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Test files
+test/
+tests/
+*.test.js
+*.spec.js
+
+# Build files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Config files that shouldn't be published
+.eslintrc*
+.prettierrc*
+.editorconfig
+
+# Lock files (let users generate their own)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml

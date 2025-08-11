@@ -1,0 +1,14 @@
+name: Update Badges
+
+on:
+  release:
+    types: [published]
+  push:
+    branches: [main, master]
+
+jobs:
+  update-badges:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update README badges
+        run: echo "Badges will auto-update via shields.io"

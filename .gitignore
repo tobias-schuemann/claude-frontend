@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+
+# Session files
+.claude-frontend-session
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Build outputs
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Package manager locks (for library, not application)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
